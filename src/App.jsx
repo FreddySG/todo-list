@@ -24,11 +24,11 @@ const App = () => {
     
     
     const url ="https://demo6193376.mockable.io/todos"
-    const [todos,setTodos] = useState([])
+    
     const fetchApi = async () =>{
         const response = await fetch(url)
         const responseJSON = await response.json()
-        setTodos(responseJSON)
+        setTasks(responseJSON)
     }
     useEffect(() =>{
         fetchApi()
@@ -87,15 +87,6 @@ const App = () => {
                 handleSubmit={handleSubmit}
                 colorSelected={colorSelected}
             />
-            <ul>
-                { 
-                    todos.map((todo,index)=>{
-                        return <li>
-                                    {todo.title} {todo.active ?'✔️': '❌'}{todo.prioridad ?'🔺': '🔻'}
-                                </li>
-                    })
-                }
-            </ul>
             
             {
                 tasks.map(task => (
@@ -104,6 +95,7 @@ const App = () => {
                         done={task.done}
                         title={task.title}
                         color={task.color}
+                        active={task.active}
                         handleCompleteTask={() => handleCompleteTask(task.id)}
                         handleDeleteTask={() => handleDeleteTask(task.id)}
                     />

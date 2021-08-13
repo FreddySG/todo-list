@@ -1,0 +1,9 @@
+            <ul>
+                { 
+                    todos.map((todo,index)=>{
+                        return <li>
+                                    {todo.title} {todo.active ?'✔️': '❌'}{todo.prioridad ?'🔺': '🔻'}
+                                </li>
+                    })
+                }
+            </ul>
